@@ -1,98 +1,87 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Sep 22 06:05:49 2023
+Created on Fri Apr 25 02:07:43 2025
 
-@author: User
+@author: samandaroripov
 """
-# WHILE, RO'YXATLAR VA LUG'ATLAR
-# WHILE YORDAMIDA RO'YXATNI TO'LDIRISH
-gullar=[]
-print('Yoqtirgan gullaringiz ro`yxatini tuzamiz.')
-n=1
+# QIYMAT QAYTARUVCHI FUNKSIYA
+
+def full_info(name,surname,country,year,email='',number=None):
+    fullinfo={'Ismi':name,
+              'Familiyasi':surname,
+              'T_joy':country,
+              'T_yil':year,
+              'email':email,
+              'number':number
+              }
+    return fullinfo
+print('Mijozlar ma`lumotini kiriting: ')
+mijozlar=[]
 while True:
-    savol=f'{n}-yoqtirgan gulingiz:'
-    gul=input(savol)
-    gullar.append(gul)
-    n+=1
-    javob=input('Yana gul qo`shasizmi?(ha/yo`q)')
-    if javob =='ha':
+    ismi=input('Ismi: ')
+    familiyasi=input('Familiyasi: ')
+    t_joy=input('Tug`ilgan mamlakati: ')
+    t_yil=int(input('Tug`ilgan yili: '))
+    email=input('E-mail address: ')
+    number=int(input('Telefon raqami: '))
+    mijozlar.append(full_info(ismi,familiyasi,t_joy,t_yil,email,number))
+    savol=input('Yana ma`lumot kiritasizmi (ha/y`oq): ')
+    if savol=='ha':
         continue
     else:
         break
-print('Yoqtirgan gullaringiz ro`yxati:')
-for gul in gullar:
-    print(gul.title())
-
-# WHILE YORDAMIDA LUG'ATNI TO'LDIRISH
-
-gullar_rang={}
-print('Gullaringiz rangini saqlovchi ro`yxat tuzamiz.')
-r=1
-while True:
-    gul_1=input(f'{r}-gul nomini kiriting:')
-    rang=input(f'{gul_1.title()}nig rangini kiriting:')
-    r+=1
-    gullar_rang[gul_1]=rang
-    javob=input('Yana gul nomi kiritasizmi?(ha/yo`q)')
-    if javob =='yo`q':
-        break
-print('Yoqtirgan gullaringiz rangi ro`yxati:')
-for k,v in gullar_rang.items():
-    print(f'{k.title()}ning rangi {v} rangda')
-
-# RO'YXAT ELEMENTLARINI O'CHIRISH
-
-#Avvalgi darslarimizning birida ro'yxat elementini o'chirish uchun `
-#.remove(qiymat)` metodi bilan tanishgan edik. Esingizda bo'lsa, bu metod ro'yxatdan 
-#eng birinchi uchragan qiymatni o'chiradi. Agar ro'yxatimizda ma'lum bir qiymat bir necha 
-#bor takrorlangan bo'lsa, ularning barchasini o'chirib tashlash uchun `while` 
-#tsiklidan foydalanishmiz mumkin.
-
-cars = ['lacetti','nexia','toyota','nexia','audi','malibu','nexia']
-while 'nexia' in cars: # toki nexia cars ro'yxati ichida ekan...
-    cars.remove('nexia') # nexia ni ro'yxatdan olib tashla
-print(cars)
-
-# Yuqoridagi tsikl toki `cars` degan ro'yxatda `'nexia'` qiymati tugagunga qadar takrorlanaveradi.
-
-# RO'YXATDAN RO'YXATGA ELEMENT KO'CHIRISH
-# Tasavvur qiling bizda ma'lum bir ro'yxat bor, biz ro'yxatdagi har bir 
-# element ustida biror amalni bajarib, uni birinchi ro'yxatdan ikkinchi ro'yxatga 
-# ko'chirib olmoqchimiz. Shunday holatlarda while tsikli juda qo'l keladi.
-
-print('Ro`yxatdagi mashinalar rangi jadvalini tuzamiz.')
-cars1=['lambo','ferrari','rolls roys','merc','bmw']
-cars1_rang={}
-while cars1:
-    savol=cars1.pop()
-    rang=input(f"{savol.title()}nig rangini kiriting:")
-    print(f"{savol.title()}nig rangi qabul qilindi.")
-    cars1_rang[savol]=rang
     
-for a,b in cars1_rang.items():
-    print(f'{a.title()}ning rangi {b} rangda.')
-    
+for mijoz in mijozlar:
+    print(mijoz)
+
+def kattasi(x,y,z):
+    max = x
+    if y>=max:
+        max = y
+    if z>=max:
+        max = z
+    return max
+
+kattasi(10,20,-5)
 
 
+def aylana_info(r,p=''):
+    info={'Radius':r,
+          'Diametr':2*r,
+          'Uzunligi':2*p*r,
+          'Yuzi':p*(r**2)}
+    return info
 
+def tub_sonlar_top(min,max):    
+    tub_sonlar = []    
+    for n in range(min,max+1):
+        tub = True
+        if (n==1):
+            tub = False
+        elif(n==2):
+            tub = True
+        else:
+            for x in range(2,n):
+                if(n%x==0):
+                    tub = False
+        if tub:
+            tub_sonlar.append(n)
+                
+    return tub_sonlar
 
+tub_sonlar_top(1,20)
 
+def fibonacci(n):
+    sonlar = []
+    for x in range(n):
+        if x==0 or x==1:
+            sonlar.append(1)        
+        else:
+            sonlar.append(sonlar[x-1]+sonlar[x-2])
+    return sonlar
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(fibonacci(10))
 
 
 
